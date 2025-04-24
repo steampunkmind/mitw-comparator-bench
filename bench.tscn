@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0of8c6xjkv7o"]
+
+[ext_resource type="Script" uid="uid://g8r0kptyui8d" path="res://bench.gd" id="1_3f1fh"]
+[ext_resource type="LabelSettings" uid="uid://ol15en1k3ci3" path="res://benchLabel.tres" id="2_yj3it"]
+[ext_resource type="PackedScene" uid="uid://c22l3s7w3x7v6" path="res://comparator.tscn" id="3_lps7h"]
+
+[node name="Bench" type="ColorRect"]
+offset_right = 3300.0
+offset_bottom = 2000.0
+color = Color(0.8, 0.8, 0.8, 1)
+script = ExtResource("1_3f1fh")
+
+[node name="PerceptionSlider" type="VSlider" parent="."]
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 469.0
+offset_right = 1130.0
+offset_bottom = 685.0
+scale = Vector2(4, 4)
+min_value = -50.0
+max_value = 150.0
+value = 75.0
+
+[node name="PerceptionValue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 1378.0
+offset_right = 1350.0
+offset_bottom = 1553.0
+text = "75.0"
+label_settings = ExtResource("2_yj3it")
+horizontal_alignment = 1
+
+[node name="ErrorValue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1450.0
+offset_right = 1850.0
+offset_bottom = 175.0
+text = "0"
+label_settings = ExtResource("2_yj3it")
+horizontal_alignment = 1
+
+[node name="Comparator" parent="." instance=ExtResource("3_lps7h")]
+layout_mode = 0
+offset_left = 1450.0
+offset_top = 200.0
+offset_right = 1850.0
+offset_bottom = 1800.0
+
+[connection signal="value_changed" from="PerceptionSlider" to="." method="_on_perception_slider_value_changed"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://c22l3s7w3x7v6"]
+
+[ext_resource type="Script" uid="uid://dsf5d223s4sd2" path="res://comparator.gd" id="1_2yn73"]
+[ext_resource type="LabelSettings" uid="uid://b5mdxehagvn8n" path="res://comparatorValue.tres" id="2_dgqp1"]
+
+[sub_resource type="Gradient" id="Gradient_dgqp1"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.5, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ltvnq"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_dgqp1")
+
+[node name="Comparator" type="ColorRect"]
+offset_right = 400.0
+offset_bottom = 1600.0
+script = ExtResource("1_2yn73")
+
+[node name="ErrorColor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 1800.0
+offset_bottom = 500.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_ltvnq")
+
+[node name="ErrorValue" type="Label" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 100.0
+text = "0"
+label_settings = ExtResource("2_dgqp1")
+horizontal_alignment = 1
+
+[node name="ErrorThreshold" type="Line2D" parent="."]
+points = PackedVector2Array(400, 800, 0, 800)
+default_color = Color(0.882353, 0.686275, 0.686275, 1)
+
+[node name="ErrorPeak" type="Line2D" parent="."]
+points = PackedVector2Array(400, 1200, 0, 1200)
+default_color = Color(0.666667, 0.333333, 0.333333, 1)
+
+[node name="PerceptionLine" type="Line2D" parent="."]
+points = PackedVector2Array(400, 400, 0, 400)
+width = 20.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="PerceptionValue" type="Label" parent="."]
+layout_mode = 0
+offset_top = 1500.0
+offset_right = 400.0
+offset_bottom = 1600.0
+text = "0"
+label_settings = ExtResource("2_dgqp1")
+horizontal_alignment = 1
